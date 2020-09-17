@@ -1,0 +1,16 @@
+
+
+It's always a good idea to name your class file with something that has some
+meaning for what the class file contains.  The name "classwork_01.java" is
+somewhat less than descriptive of what this is supposed to do.  Consider a
+name like "Greeter.java" or "HelloSayer.java" or even "NameEchoer.java" as
+the name for the class.
+
+Also, remember that by convention class files [and the class TYPES they are
+in actuality] start with an UPPERCASE LETTER, so that given the name of your
+file it would be "Classwork_01.java".
+
+Your code looks nice, consisten indenting and enough space so it is readable
+and clean-looking.
+
+Nice job overall!  Can't wait to see what you two do with classwork_02.....
