@@ -1,8 +1,9 @@
-class HighArrayApp
+public class HighArrayApp 
      {
+
      public static void main(String[] args)
           {
-          int maxSize = 100; // array size
+          int maxSize = 15; // array size
           HighArray arr; // reference to array
           arr = new HighArray(maxSize); // create the array
 
@@ -15,6 +16,7 @@ class HighArrayApp
           arr.insert(11);
           arr.insert(00);
           arr.insert(66);
+          arr.insert(33);
           arr.insert(33);
 
           arr.display(); // display items
@@ -33,6 +35,30 @@ class HighArrayApp
           arr.getMax();
 
           arr.display(); // display items again
+
+          HighArray arr2 = new HighArray(6);
+
+          arr2.insert(3);
+          arr2.insert(1);
+          arr2.insert(4);
+          arr2.insert(3);
+          arr2.insert(5);
+          arr2.insert(3);
+          
+
+
+          System.out.println ("Begining Test Case: NODUPS:");
+          System.out.println("");
+          System.out.println("");
+          System.out.println("");
+          System.out.println("");
+
+          arr2.noDups();
+
+
+
+
+
           } // end main()
      } // end class HighArrayApp
 ////////////////////////////////////////////////////////////////
