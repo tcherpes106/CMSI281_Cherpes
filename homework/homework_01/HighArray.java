@@ -55,19 +55,29 @@ class HighArray
           System.out.println("");
           }
 //-----------------------------------------------------------
-     public void getMax()
+     public long getMax()
           {
           long max = 1;
           int j;
 
-          if (!a.isArray(a) || !a.length)
+          if (a.length == 0)
                max = 1;
-               break;
 
           for(j=0; j<nElems; j++)
                if(a[j] >= a[j+1] )
                     max = a[j];
           return max;
-          } // end getMax()
+        } // end getMax()
+
+     /*public void noDups()
+          {
+            int i;
+            int j;
+          for(j=0; j<nElems; j++)
+               for(i=0; i<nElems; i++)
+               if(a[j] >= a[j+i] )
+                    a = ArrayUtils.removeElement(a, a[j]);
+          }*/
+
      } // end class HighArray
 ////////////////////////////////////////////////////////////////

@@ -18,6 +18,7 @@ class HighArrayApp
           arr.insert(33);
 
           arr.display(); // display items
+          arr.getMax();
 
           int searchKey = 35; // search for item
           if( arr.find(searchKey) )
@@ -28,6 +29,8 @@ class HighArrayApp
           arr.delete(00); // delete 3 items
           arr.delete(55);
           arr.delete(99);
+
+          arr.getMax();
 
           arr.display(); // display items again
           } // end main()
