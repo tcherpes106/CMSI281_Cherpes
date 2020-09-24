@@ -2,9 +2,13 @@
 // demonstrates array class with high-level interface
 // to run this program: C>java HighArrayApp
 ////////////////////////////////////////////////////////////////
-
+import java.util.*;
+import java.util.stream.*;
 import java.util.Arrays;
-public class HighArray 
+import java.util.LinkedHashSet;
+
+
+public class HighArray
      {
      private long[] a; // ref to array a
      private int nElems; // number of data items
@@ -57,58 +61,42 @@ public class HighArray
           System.out.println("");
           }
 //-----------------------------------------------------------
-     public long getMax()
+     public void getMax()
           {
-          long max = 1;
+          long max = 0;
           int j;
 
+          if (a == null)
+               max = 0;
+
           if (a.length == 0)
-               max = 1;
+               max = 0;
 
           for(j=0; j<nElems; j++)
-               if(a[j] >= a[j+1] )
+               if(a[j] >= max)
                     max = a[j];
-          return max;
-        } // end getMax()
+          System.out.println(max);
+          } // end getMax()
 
+//-----------------------------------------------------------
      public void noDups()
-          {
-            int count = 0;
-            int length = a.length;
-            long [] retVal = new long[length];
-            Arrays.sort(a);
-            System.out.println(Arrays.toString(a));
-
-           if (length==0)
-           {
-            return;
-           }
-
-            for(int i=0; i<nElems-1; i++)
-            {
-              if (a[i]!=a[i+1]) {
-                retVal [count] = a[i];
-                count++;
-                //System.out.println("Made it here");
-                //System.out.println(nElems);
-              }
-               //System.out.println("End of loop: Round-" + i);
-            }
-
-            retVal[count] = a[a.length-1];
-
-            long [] fin = new long [count+1];
-
-            fin = Arrays.copyOfRange(retVal, 0, count+1);
-
-            System.out.println(Arrays.toString(retVal));
-              
-            a = fin;   
-                    
-            System.out.println(Arrays.toString(a));
-            
-
+     {
+          Set<Long>set = new HashSet<Long>();
+          for( int i = 0; i < a.length; i++ ) {
+               set.add( Long.valueOf( a[i] ) );
           }
+
+          int i = 0;
+          for(Long l : set){
+           a[i++] = l.longValue();
+          }
+
+          nElems = set.size();
+     }
+//Array.sort, will sort the array
+//Hash Set, only takes objects, cant pass in an int.
+//put a value of ex) -999
+//keep track of the size of the thing in array, keep track of the zeros
 
      } // end class HighArray
 ////////////////////////////////////////////////////////////////
