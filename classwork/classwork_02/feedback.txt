@@ -1,0 +1,16 @@
+
+
+I discovered that you had two different package names!
+
+Your SourceFile.java and TargetFile.java are in a subdirectory which is named
+"copier_support", but in the files you were saying the package name was
+"copiersupport" which is the way it was spelled out in the problem statement.
+That extra underscore was the killer!
+
+You had the same situation in the MyFileCopier.java file, calling out the
+package as "copiersupport" without the underscore.  I changed things to match
+and it all works great!
+
+Forgive the intrusion to make a text file for it to operate on in your repo.
+
+Keep it up, guys!!

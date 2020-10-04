@@ -1,5 +1,5 @@
-import copiersupport.SourceFile;
-import copiersupport.TargetFile;
+import copier_support.SourceFile;
+import copier_support.TargetFile;
 import java.util.Scanner;
 
 public class MyFileCopier {
