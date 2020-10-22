@@ -62,7 +62,7 @@ public class CircularList {
      * @return boolean true if value was found, false otherwise
      */
     public boolean find( int value ) {
-        Node currentPointer = current; 
+        Node currentPointer = current;
         for ( int i = 0; i < size; i++ ) {
             if ( current.data == value ) {
                 current = currentPointer;
@@ -76,9 +76,9 @@ public class CircularList {
 
     /**
      * Remove value from list
-     * @param int value to remove
+     * @param int value to deletion
      */
-    public void remove( int value ) {
+    public void deletion( int value ) {
         Node currentPointer = current;
         for ( int i = 0; i < size; i++ ) {
             if ( current.next.data == value ) {
@@ -137,13 +137,13 @@ public class CircularList {
         System.out.println( ( theList.find( -5 ) ) ? "   Found -5" :  "   Could not find -5" );
         System.out.println( ( theList.find( 20 ) ) ? "   Found 20" :  "   Could not find 20" );
 
-        System.out.println( ">>>>> Test for remove <<<<<");
+        System.out.println( ">>>>> Test for deletion <<<<<");
         System.out.println( "   The list: " + theList.toString() );
-        theList.remove( 5 );
+        theList.deletion( 5 );
         System.out.println( "   The list without 5: " + theList.toString() );
-        theList.remove( 20 );
+        theList.deletion( 20 );
         System.out.println( "   The list without 20: " + theList.toString() );
-        theList.remove( 25 );
+        theList.deletion( 25 );
         System.out.println( "   The list without 25: " + theList.toString() );
     }
 }
