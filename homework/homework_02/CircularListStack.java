@@ -24,7 +24,8 @@ public class CircularListStack {
      */
     public int pop() {
         int removeInt = lastInserted;
-        theList.remove( removeInt );
+//        theList.remove( removeInt );
+        theList.deletion( removeInt );
         lastInserted = theList.getCurrentValue();
         return removeInt;
     }
