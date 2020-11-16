@@ -56,7 +56,7 @@ class ArrayOddEven {
    }
 }
 
-class oddEvenSortApp {
+class OddEvenSortApp {
    public static void main(String[] args) {
      System.out.println("\n-------Test 1-------\n");
       int maxSize = 100;
