@@ -12,7 +12,6 @@ import java.util.Collections;
 
 
 public class HuffmanTree {
-
 	// create indiviudal nodes to later use in the arraylist/ tree
 	 public class Huffnode  implements Comparable<Huffnode> {
 
@@ -21,7 +20,6 @@ public class HuffmanTree {
 		public Huffnode leftNode;
 		public Huffnode rightNode;
 		public String code="";
-		//public Huffnode parent = null;
 
 		//constructor to create Hnodes
 		public  Huffnode (char val, int cnt, Huffnode left, Huffnode right){
@@ -45,7 +43,7 @@ public class HuffmanTree {
 		}
 	}
 
-	// THIS should create an arrayList from the String given by user, 
+	// DONE 
 	public ArrayList compress (String textString) {
 		ArrayList <Huffnode> txtFile = new ArrayList<Huffnode>(56);
 		String alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ., \n";
@@ -59,8 +57,6 @@ public class HuffmanTree {
 			for (int i =0 ; i < textString.length(); i++) {
 				if (textString.charAt(i)==(txtFile.get(j).value)){
 					txtFile.get(j).count ++;
-
-					
 				}
 			}
 		}
@@ -77,87 +73,98 @@ public class HuffmanTree {
 				Huffnode finalInsert = txtFile.get(k);
 				retFile.add(finalInsert);
 			}
-				
-			
-
 		}
-
 		Collections.sort(retFile);
-
-
 		return retFile;
-
-		//make sure to sort in here
 	}
-
-	//build the tree
 	
+	//DONE- placeholder is @, not space
 	public PriorityQueue huffTree (ArrayList<Huffnode> charNodes) {
 		PriorityQueue<Huffnode> tree = new PriorityQueue<Huffnode>(charNodes.size());
-		
+		Huffnode leftNode = null;
+		Huffnode rightNode = null;
+		char pHolder = '@';
 		//PriorityQueue <Huffnode> doneQ = new PriorityQueue<Huffnode>(1);
 
 		
-		for (int i = 0; i< charNodes.size()-1; i++){
+		for (int i = 0; i< charNodes.size(); i++){
+			//System.out.println("ArrayList Value: " +charNodes.get(i).value);
 			tree.add(charNodes.get(i));
+			//System.out.println("Printing Queue Value " + tree.peek().count);
 		}
-
 		while (tree.size()>1){
-			Huffnode leftNode = tree.peek();
+			 leftNode = tree.peek();
 			tree.remove();
-			Huffnode rightNode= tree.peek();
+			 rightNode= tree.peek();
 			tree.remove(); 
 		
 			// parent node that will be added.
-			Huffnode parent = new Huffnode(' ', leftNode.count +rightNode.count, leftNode, rightNode);
+			Huffnode parent = new Huffnode(pHolder, leftNode.count +rightNode.count, leftNode, rightNode);
 			tree.add(parent);
 		}
-
 		return tree;
-		//created the queue, now creating tree
-		// select certain index, adjust their nodes for right and left
-		// Create holder nodes to be the parent node
-
-
 	}
-	// will create the new table based off of the tree created
-	public void encode (PriorityQueue<Huffnode> treelist){
+	// DONE
+	public String encode (PriorityQueue<Huffnode> treelist, String textLine){
 		HuffmanTree runner = new HuffmanTree();
+		//ArrayList<Huffcode> = new ArrayList<Huffcode> ();
 		Huffnode root = treelist.peek();
-		String value = "";
+		String text = textLine;
+		char chop = ' ';
+		String retVal = "";
 
-		runner.inOrderTraversal(root);
-	}
-	// not sure if to put codechar inserts before or after calling recursive method or how to add code to each node
-	public void inOrderTraversal (Huffnode step){
-		String codeChar = "";
-		if (step == null){
-			return;
+		for (int i =0; i < text.length(); i++){
+
+			chop = text.charAt(i); 
+			retVal += runner.inOrderTraversal(root, chop);
+			//System.out.println("String returned: " +retVal);
 		}
-		codeChar += "0";
-		inOrderTraversal(step.leftNode);
-		codeChar = codeChar.substring(0,codeChar.length()-1);
-		System.out.println(step.value+"");
-		step.code = codeChar;
+		//System.out.println("Printing the code piece for T:" + root.leftNode.rightNode.code);
 
-		codeChar += "1";
-		inOrderTraversal(step.rightNode);
-		codeChar = codeChar.substring(0,codeChar.length()-1);	
+
+		return retVal;
 	}
 
-	// returns the message that was encoded as a string
-	public void decode (String binary, PriorityQueue<Huffnode> treelist){
-		HuffmanTree runner = new HuffmanTree();
+	// DONE
+	public String inOrderTraversal (Huffnode step, char target ){
+		
+		if (step.leftNode != null || step.rightNode != null) {
+			if (step.leftNode.value == target){
+				return "0";
+			}
+			if (step.rightNode.value == target){
+				return "1";
+			}
+
+			String leftTraverse = inOrderTraversal(step.leftNode,target);
+			if (leftTraverse != null){
+				return "0" + leftTraverse;
+			}
+
+			String rightTraverse = inOrderTraversal(step.rightNode,target);
+			if (rightTraverse != null){
+				return "1" + rightTraverse;
+			}
+		}	
+
+		return null;
+	}
+
+	// DONE
+	public String decode (String binary, PriorityQueue<Huffnode> treelist){
 		Huffnode root = treelist.peek();
-		Huffnode pointer =root;
-		String chooper ="";
+		Huffnode pointer = root;
+		String message ="";
 
 		//looping through the string
 
-		for (int i =0; i<binary.length();i++){
-			while (pointer.leftNode != null && pointer.rightNode != null){
-				
-				//might need to have quotes?
+		for (int i =0; i<binary.length(); i++) {
+			if (pointer.leftNode == null && pointer.rightNode ==null){
+				message += pointer.value;
+				pointer = root;
+
+			}
+			//else {
 				if (binary.charAt(i)=='0'){
 					pointer = pointer.leftNode;
 
@@ -165,17 +172,12 @@ public class HuffmanTree {
 				else {
 					pointer= pointer.rightNode;
 				}
-			}
-			chooper +=pointer.value;
-			pointer = root;
+			//}
+			System.out.println("Value:"+ pointer.value + "frequency:" + pointer.count);
 
 		}
-		//use a pointer to call throughout the process
-		//loop through the binary string
-		//If left +right = null, return the value at NODE
-		//if first letter is 0 -> Go Left
-		//If 1 -> go right
-
+		message += pointer.value;
+		return message;
 		
 
 	}
@@ -215,14 +217,20 @@ public class HuffmanTree {
 		System.out.println(" Creating huffman tree:");
 		PriorityQueue<Huffnode> treeMade = new PriorityQueue<Huffnode>();
 		treeMade= simulator.huffTree(tester);
+		//System.out.println("Left piece of the root in Queue: " +treeMade.peek().rightNode.leftNode.count);
 		System.out.println("Success! Tree created");
-		System.out.println("Now encoding the text.");
-		simulator.encode(treeMade);
-		System.out.println("Success!properly ran encoded.");
-		System.out.println("Now checking Decode.");
-		//simulator.decode
 
+		System.out.println("Now Creating Code from tree:");
+		String hamurabi = "";
+		hamurabi = simulator.encode(treeMade, inputText);
+		System.out.println("Binary Code:"+ hamurabi);
 
+		System.out.println("Now Decoding Message using the tree:");
+		String decodedMsg ="";
+		decodedMsg = simulator.decode(hamurabi, treeMade);
+		System.out.println("Decoded Message: "+ decodedMsg);
+
+		System.out.println("Success, message has been decoded.");
 
 
 	}
