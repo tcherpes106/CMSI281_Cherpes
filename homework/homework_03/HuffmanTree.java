@@ -191,10 +191,10 @@ public class HuffmanTree {
 		String inputText = "";
 		int counter = 0;
 		inputText += sc.nextLine();
-		/*
+		
 		while (counter ==0){
 		System.out.println("(Did you want another line? if not press enter.)");
-			inputText += " ";
+			inputText += " \n";
 			inputText += sc.nextLine();
 			//System.out.println("First input in loop");
 			
@@ -205,7 +205,7 @@ public class HuffmanTree {
 			}
 			System.out.println("End of loop");
 
-		}*/
+		}
 
 
 		System.out.println("Grabbed text: " + inputText);
