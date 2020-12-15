@@ -1,0 +1,69 @@
+
+Homework04 Evaluation
+======================
+
+Nice job on this assignment...
+
+Your code looks great and thanks for doing file headers!
+
+
+scores:
+=============================
+Tree Traverser
+   inOrderTraverser method implemented       [1 pt.]
+   2 test sets with at least minimal nodes   [2 pt.]
+   produces proper sequences                 [2 pt.]
+
+Priority Queue
+   Queue creation works correctly            [1 pt.]
+   insertion works correctly                 [1 pt.]
+   isFull() works correctly                  [1 pt.]
+   isEmpty() works correctly                 [1 pt.]
+   removal() works correctly                 [1 pt.]
+   heap representation works correctly       [1 pt.]
+
+Linear Probing String Hasher
+   menu works [gimme, has to work if there]  [1 pt.]
+   shows contents                            [1 pt.]
+   hash table created correctly              [1 pt.]
+   insertion works correctly                 [1 pt.]
+   linear probing works correctly            [1 pt.]
+   deletion works correctly                  [1 pt.]
+   finding works correctly                   [1 pt.]
+
+Digit Folding Hasher
+   menu works [gimme, has to work if there]  [1 pt.]
+   shows contents                            [1 pt.]
+   insertion works correctly                 [1 pt.]
+   linear probing works correctly            [1 pt.]
+   deletion works correctly                  [1 pt.]
+   finding works correctly                   [1 pt.]
+
+Coding style                                 [1 pt.]
+Tests written to test all classes            [1 pt.]
+Headers in all files                         [4 pt.]
+
+Total credit is 30 points
+-------------------------
+
+you got 30 out of 30 which is 100% which is an A-plus
+
+Notes:
+======
+Nice work on this assignment, as usual!
+
+Although, kind of minimal on the first problem.  There's no main and not any
+test code to make sure it works, but I can tell from the code that it's good.
+There were supposed to be some tests to verify that the code produces proper
+sequences, but I see that I just asked for a method.  My bad.  Your win.
+
+PriorityQ works fine.
+
+The combined hash functions work fine.  Nice work on the output, so that the
+user can see exactly what is happening.  The linear probing works as expected
+and the digit folding works fine.  It would be helpful to give the user some
+information about HOW the digit folding is being done, but that wasn't asked
+for in the problem.
+
+Nice job, and a great finish to the semester!
+
